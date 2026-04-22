@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbbt5u1lme7ti"
-path="res://.godot/imported/up_right.png-4cf2be294c5c7383933cbcf75530785a.ctex"
+uid="uid://dju557yac8ely"
+path="res://.godot/imported/darker_wall_plant_bg.png-0b7c3b9d454e339b481657ed88fc68a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/up_right.png"
-dest_files=["res://.godot/imported/up_right.png-4cf2be294c5c7383933cbcf75530785a.ctex"]
+source_file="res://images/darker_wall_plant_bg.png"
+dest_files=["res://.godot/imported/darker_wall_plant_bg.png-0b7c3b9d454e339b481657ed88fc68a7.ctex"]
 
 [params]
 

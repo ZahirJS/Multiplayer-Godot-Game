@@ -12,13 +12,14 @@ config_version=5
 
 config/name="multiplayer-2d-game"
 run/main_scene="uid://cd14r4ny123v1"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1120
-window/size/viewport_height=800
+window/size/viewport_width=1792
+window/size/viewport_height=1280
+window/stretch/mode="canvas_items"
 
 [rendering]
 
