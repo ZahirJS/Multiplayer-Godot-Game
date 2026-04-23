@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcr4cj14uhghu"]
+[gd_scene load_steps=4 format=3 uid="uid://dcr4cj14uhghu"]
 
+[ext_resource type="Script" uid="uid://bb4s62as6h3gc" path="res://light_obstacle.gd" id="1_adc2d"]
 [ext_resource type="Texture2D" uid="uid://ktt72dtk5qu6" path="res://images/light_obs.png" id="1_aug4x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_adc2d"]
 size = Vector2(64, 19)
 
 [node name="Light_Obstacle" type="Area2D"]
+script = ExtResource("1_adc2d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_aug4x")

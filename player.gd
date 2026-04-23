@@ -4,6 +4,9 @@ const SPEED = 450.0
 const JUMP_FORCE = -600.0
 const GRAVITY = 1750.0
 var player_id = 1
+var type = "light"
+var spawn_position = Vector2.ZERO
+
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -29,3 +32,16 @@ func sync_position(pos: Vector2):
 	if not is_multiplayer_authority():
 		position = pos
 		
+
+func die():
+	if is_multiplayer_authority():
+		die_rpc.rpc()
+
+@rpc("any_peer", "call_local")
+func die_rpc():
+	visible = false
+	set_physics_process(false)
+	get_node("/root/Main").show_death_screen()
+
+func _ready():
+	spawn_position = position
