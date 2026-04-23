@@ -1,0 +1,98 @@
+[gd_scene load_steps=17 format=3 uid="uid://dl4nmin82lujs"]
+
+[ext_resource type="Script" uid="uid://c6u2xyhscly1x" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://b1rhyt18bk7ks" path="res://sprites/light/j1.png" id="2_8f6g2"]
+[ext_resource type="Texture2D" uid="uid://lsd60v82asv3" path="res://sprites/light/j2.png" id="3_xlhnw"]
+[ext_resource type="Texture2D" uid="uid://bcqlxvymo3so4" path="res://sprites/light/j3.png" id="4_6i7fw"]
+[ext_resource type="Texture2D" uid="uid://digx53yj0uxxx" path="res://sprites/light/j4.png" id="5_5lgfj"]
+[ext_resource type="Texture2D" uid="uid://b8df5nj8gwcrv" path="res://sprites/light/j5.png" id="6_q46np"]
+[ext_resource type="Texture2D" uid="uid://bl27muay42dff" path="res://sprites/light/j6.png" id="7_wclup"]
+[ext_resource type="Texture2D" uid="uid://s75813rqbu2x" path="res://sprites/light/j7.png" id="8_n8s3e"]
+[ext_resource type="Texture2D" uid="uid://cj23afv1aicao" path="res://sprites/light/j8.png" id="9_6362i"]
+[ext_resource type="Texture2D" uid="uid://b2eppntiopm77" path="res://sprites/light/w1.png" id="10_0db6x"]
+[ext_resource type="Texture2D" uid="uid://bvv8y0xit8qor" path="res://sprites/light/w2.png" id="11_1f86a"]
+[ext_resource type="Texture2D" uid="uid://cfyqwybt1c0cg" path="res://sprites/light/w3.png" id="12_5a4kh"]
+[ext_resource type="Texture2D" uid="uid://5f825e1b4jke" path="res://sprites/light/w4.png" id="13_ipniv"]
+[ext_resource type="AudioStream" uid="uid://y4thsic3gy0s" path="res://music/264057__b_lamerichs__short-loops-13-02-2015-4-game-over-2.mp3" id="14_xlhnw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yecg0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_5lgfj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8f6g2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xlhnw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6i7fw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5lgfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_q46np")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wclup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_n8s3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6362i")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 4.8
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_0db6x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_1f86a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5a4kh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ipniv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5a4kh")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
+radius = 34.0
+height = 168.0
+
+[node name="PlayerLight" type="CharacterBody2D"]
+z_index = 1
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_4flbx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_yecg0")
+animation = &"jump"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 11)
+shape = SubResource("CapsuleShape2D_onrkg")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_xlhnw")
+volume_db = -21.714
