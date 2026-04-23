@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://cd14r4ny123v1"]
+[gd_scene load_steps=24 format=4 uid="uid://cd14r4ny123v1"]
 
 [ext_resource type="Script" uid="uid://cx1i0i2e2s323" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dl4nmin82lujs" path="res://player.tscn" id="1_ig7tw"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://dyqpy8b7yjqh1" path="res://images/down_left.png" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://dcr4cj14uhghu" path="res://light_obstacle.tscn" id="10_efxa6"]
 [ext_resource type="PackedScene" uid="uid://c1kya1ksk4p83" path="res://dark_obstacle.tscn" id="11_dg77c"]
+[ext_resource type="Script" uid="uid://bg4riuf7f8mgu" path="res://goal_light.gd" id="12_dg77c"]
+[ext_resource type="Script" uid="uid://c3acuubr5y2sf" path="res://goal_dark.gd" id="13_ycdy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
 texture = ExtResource("4_lquwl")
@@ -62,6 +64,14 @@ sources/7 = SubResource("TileSetAtlasSource_272bh")
 sources/6 = SubResource("TileSetAtlasSource_efxa6")
 sources/9 = SubResource("TileSetAtlasSource_5vw27")
 sources/12 = SubResource("TileSetAtlasSource_dg77c")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ycdy4"]
+radius = 26.0
+height = 52.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w48qg"]
+radius = 27.0
+height = 56.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1bvp3")
@@ -124,11 +134,67 @@ text = "You are dead...
 
 Want to start over?"
 
-[node name="Button" type="Button" parent="DeathScreen"]
+[node name="Button_Death" type="Button" parent="DeathScreen"]
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Restart"
 
+[node name="GoalLight" type="Area2D" parent="." groups=["goal"]]
+z_index = 1
+script = ExtResource("12_dg77c")
+
+[node name="ColorRect" type="ColorRect" parent="GoalLight"]
+z_index = 1
+offset_left = 120.0
+offset_top = 515.0
+offset_right = 210.0
+offset_bottom = 575.0
+color = Color(0.917635, 0.775513, 0.393927, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalLight"]
+position = Vector2(165, 541)
+shape = SubResource("CapsuleShape2D_ycdy4")
+
+[node name="GoalDark" type="Area2D" parent="." groups=["goal"]]
+z_index = 1
+position = Vector2(47, 3)
+script = ExtResource("13_ycdy4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalDark"]
+z_index = 1
+position = Vector2(730, 542)
+shape = SubResource("CapsuleShape2D_w48qg")
+
+[node name="ColorRect" type="ColorRect" parent="GoalDark"]
+z_index = 1
+offset_left = 686.0
+offset_top = 511.0
+offset_right = 776.0
+offset_bottom = 571.0
+color = Color(0.067589, 0.397766, 0.468335, 1)
+
+[node name="VictoryScreen" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="VictoryScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.705882)
+
+[node name="Label" type="Label" parent="VictoryScreen"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "You won!!"
+
+[node name="Button_Victory" type="Button" parent="VictoryScreen"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Menu"
+
 [connection signal="pressed" from="MainScreen/VBoxContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="MainScreen/VBoxContainer/Join" to="." method="_on_join_pressed"]
-[connection signal="pressed" from="DeathScreen/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="DeathScreen/Button_Death" to="." method="_on_death_button_pressed"]
+[connection signal="pressed" from="VictoryScreen/Button_Victory" to="." method="_on_victory_button_pressed"]

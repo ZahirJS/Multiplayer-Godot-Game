@@ -31,19 +31,21 @@ func spawn_player(id):
 	player.type = "dark"
 	add_child(player)
 	client_player = player
+	client_player.set_physics_process(true)
 
 func _on_host_pressed():
 	host_game()
 	$MainScreen.hide()
+	$Player.set_physics_process(true)
 
 func _on_join_pressed():
 	var ip = $MainScreen/VBoxContainer/LineEdit.text
 	join_game(ip)
 	$MainScreen.hide()
+	$Player.set_physics_process(true)
 
 func show_death_screen():
 	$DeathScreen.visible = true
-
 
 @rpc("any_peer", "call_local")
 func restart_game():
@@ -52,12 +54,33 @@ func restart_game():
 	$Player.set_physics_process(true)
 	$Player.position = $Player.spawn_position
 	$Player.velocity = Vector2.ZERO
-	
 	if client_player != null:
 		client_player.visible = true
 		client_player.set_physics_process(true)
 		client_player.position = client_player.spawn_position
 		client_player.velocity = Vector2.ZERO
 
-func _on_button_pressed() -> void:
+func _on_death_button_pressed() -> void:
 	restart_game.rpc()
+
+func show_victory_screen():
+	show_victory_rpc.rpc()
+
+@rpc("any_peer", "call_local")
+func show_victory_rpc():
+	$VictoryScreen.visible = true
+
+func _on_victory_button_pressed() -> void:
+	victory_return()
+
+func victory_return():
+	$Player.set_physics_process(false)
+	if client_player != null:
+		client_player.queue_free()
+		client_player = null
+	$Player.position = $Player.spawn_position
+	$Player.velocity = Vector2.ZERO
+	multiplayer.multiplayer_peer = null
+	peer = ENetMultiplayerPeer.new()
+	$VictoryScreen.visible = false
+	$MainScreen.visible = true
