@@ -84,7 +84,7 @@ script = ExtResource("1_1bvp3")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_yaehf")
-volume_db = -28.0
+volume_db = -20.571
 autoplay = true
 parameters/looping = true
 
@@ -268,6 +268,18 @@ theme_override_fonts/font = ExtResource("11_2cqfq")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = ExtResource("12_yaehf")
 text = "You won!"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VictoryScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_2cqfq")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("12_yaehf")
+text = "Luma & Nyx
+Developed by:
+Edith Cabral Medina
+Andres Zahir Rodriguez Robles"
+horizontal_alignment = 1
 
 [node name="Button_Victory" type="Button" parent="VictoryScreen/VBoxContainer"]
 layout_mode = 2
@@ -279,7 +291,85 @@ text = "Menu"
 [node name="VictorySound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_cegan")
 
+[node name="Fade" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="ColorRect" type="ColorRect" parent="Fade"]
+offset_right = 1792.0
+offset_bottom = 1280.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PauseScreen" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="PauseScreen"]
+offset_right = 1792.0
+offset_bottom = 1280.0
+color = Color(0.0588235, 0.0588235, 0.0588235, 0.627451)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = -108.5
+offset_right = 65.5
+offset_bottom = 108.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PauseScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_2cqfq")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("12_yaehf")
+text = "Pause"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="PauseScreen/VBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Button" type="Button" parent="PauseScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_2cqfq")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = ExtResource("12_yaehf")
+text = "Continue"
+
+[node name="Button2" type="Button" parent="PauseScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_2cqfq")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = ExtResource("12_yaehf")
+text = "Close Game"
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="Button" type="Button" parent="HUD"]
+custom_minimum_size = Vector2(1, 1)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -68.0
+offset_bottom = 78.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "||"
+
 [connection signal="pressed" from="MainScreen/VBoxContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="MainScreen/VBoxContainer/Join" to="." method="_on_join_pressed"]
 [connection signal="pressed" from="DeathScreen/VBoxContainer/Button_Death" to="." method="_on_death_button_pressed"]
 [connection signal="pressed" from="VictoryScreen/VBoxContainer/Button_Victory" to="." method="_on_victory_button_pressed"]
+[connection signal="value_changed" from="PauseScreen/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="PauseScreen/VBoxContainer/Button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseScreen/VBoxContainer/Button2" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="HUD/Button" to="." method="_on_pause_button_pressed"]

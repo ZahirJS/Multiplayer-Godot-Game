@@ -7,9 +7,10 @@ var type = "light" # tipo del jugador: light o dark
 var spawn_position = Vector2.ZERO # posicion inicial guardada al arrancar
 
 func _ready():
-	# guardar posicion inicial y desactivar fisica hasta que inicie la partida
 	spawn_position = position
 	set_physics_process(false)
+	if has_node("Label"):
+		$Label.visible = false
 
 func _physics_process(delta):
 	# aplicar gravedad cuando esta en el aire
