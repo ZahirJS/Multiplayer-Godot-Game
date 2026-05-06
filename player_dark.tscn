@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://dnwq41rroqprj"]
+
+[ext_resource type="Script" uid="uid://c6u2xyhscly1x" path="res://player.gd" id="1_dmiml"]
+[ext_resource type="Texture2D" uid="uid://dvr2wboormqvn" path="res://sprites/dark/dark_idle_1.png" id="2_pvkab"]
+[ext_resource type="Texture2D" uid="uid://dej6wic0obyo2" path="res://sprites/dark/dark_idle_2.png" id="3_ta77u"]
+[ext_resource type="Texture2D" uid="uid://d0ytlixrmhfo7" path="res://sprites/dark/dark_run_1.png" id="4_dmiml"]
+[ext_resource type="Texture2D" uid="uid://jn807lpptm67" path="res://sprites/dark/dark_run_2.png" id="5_yp20c"]
+[ext_resource type="Texture2D" uid="uid://bcn6tkgy5ntk3" path="res://sprites/dark/dark_run_3.png" id="6_0228s"]
+[ext_resource type="Texture2D" uid="uid://uciqybnu0rod" path="res://sprites/dark/dark_run_4.png" id="7_ejp4t"]
+[ext_resource type="AudioStream" uid="uid://y4thsic3gy0s" path="res://music/264057__b_lamerichs__short-loops-13-02-2015-4-game-over-2.mp3" id="10_lsr60"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yecg0"]
+animations = [{
+"frames": [{
+"duration": 7.0,
+"texture": ExtResource("2_pvkab")
+}, {
+"duration": 5.0,
+"texture": ExtResource("3_ta77u")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 7.0,
+"texture": ExtResource("2_pvkab")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 4.8
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dmiml")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yp20c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0228s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ejp4t")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
+radius = 73.49999
+height = 235.49997
+
+[node name="PlayerDark" type="CharacterBody2D"]
+z_index = 1
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_dmiml")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_yecg0")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 11)
+shape = SubResource("CapsuleShape2D_onrkg")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_lsr60")
+volume_db = -21.714
+
+[node name="Label" type="Label" parent="."]
+offset_top = -200.0
+offset_right = 49.0
+offset_bottom = -117.0
+theme_override_font_sizes/font_size = 60
+text = "∇"
+horizontal_alignment = 1

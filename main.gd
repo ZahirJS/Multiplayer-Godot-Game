@@ -34,7 +34,7 @@ func _on_player_connected(id):
 @rpc("authority", "call_local")
 func spawn_player(id):
 	# instanciar jugador del cliente y asignarle tipo oscuridad
-	var player = preload("res://player_light.tscn").instantiate()
+	var player = preload("res://player_dark.tscn").instantiate()
 	player.name = str(id)
 	player.set_multiplayer_authority(id)
 	player.type = "dark"
