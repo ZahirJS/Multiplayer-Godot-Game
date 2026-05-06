@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 450.0
-const JUMP_FORCE = -700.0
+const SPEED = 400.0
+const JUMP_FORCE = -630.0
 const GRAVITY = 1750.0
 var type = "light" # tipo del jugador: light o dark
 var spawn_position = Vector2.ZERO # posicion inicial guardada al arrancar

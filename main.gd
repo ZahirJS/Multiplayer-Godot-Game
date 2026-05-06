@@ -38,6 +38,7 @@ func spawn_player(id):
 	player.name = str(id)
 	player.set_multiplayer_authority(id)
 	player.type = "dark"
+	player.position = Vector2(745, 460)
 	add_child(player)
 	if not multiplayer.is_server():
 		player.get_node("Label").visible = true

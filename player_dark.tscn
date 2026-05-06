@@ -49,8 +49,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
-radius = 73.49999
-height = 235.49997
+radius = 33.499996
+height = 142.99998
 
 [node name="PlayerDark" type="CharacterBody2D"]
 z_index = 1
@@ -58,7 +58,7 @@ scale = Vector2(0.8, 0.8)
 script = ExtResource("1_dmiml")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.35, 0.35)
 sprite_frames = SubResource("SpriteFrames_yecg0")
 animation = &"walk"
 
