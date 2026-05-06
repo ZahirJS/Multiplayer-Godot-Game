@@ -3,6 +3,7 @@ extends Area2D
 var type = "light" # tipo del obstaculo
 
 func _ready():
+	$Sprite2D.play("idle")
 	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body):
