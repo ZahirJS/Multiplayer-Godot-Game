@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://ba5pqbbcengy1"]
+[gd_scene load_steps=7 format=3 uid="uid://ba5pqbbcengy1"]
 
-[ext_resource type="Script" uid="uid://bg4riuf7f8mgu" path="res://goal_light.gd" id="1_2iow5"]
 [ext_resource type="Texture2D" uid="uid://dppps05q2f0ia" path="res://sprites/dark_portal/dark_portal_1-1.png.png" id="2_2iow5"]
 [ext_resource type="Texture2D" uid="uid://gmv6bf44r7tk" path="res://sprites/dark_portal/dark_portal_2-1.png.png" id="3_mwuw0"]
 [ext_resource type="Texture2D" uid="uid://xvn4x0o64xm3" path="res://sprites/dark_portal/dark_portal_3-1.png.png" id="4_4eu2h"]
@@ -29,16 +28,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8opb"]
-size = Vector2(342, 453)
+size = Vector2(103, 137)
 
 [node name="GoalDark" type="Area2D"]
-script = ExtResource("1_2iow5")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_3ehc1")
-animation = &"idle"
 script = ExtResource("5_mwuw0")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_3ehc1")
+animation = &"idle"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -6.5)
+position = Vector2(0.5, -1.5)
 shape = SubResource("RectangleShape2D_x8opb")

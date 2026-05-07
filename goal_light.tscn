@@ -28,16 +28,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8opb"]
-size = Vector2(342, 453)
+size = Vector2(102.625, 136.25)
 
 [node name="GoalLight" type="Area2D"]
 script = ExtResource("1_a6yi0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_3ehc1")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -6.5)
+position = Vector2(-0.3125, -1.125)
 shape = SubResource("RectangleShape2D_x8opb")
-script = ExtResource("1_a6yi0")
