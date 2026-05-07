@@ -22,8 +22,8 @@ func _on_body_exited(body):
 		$AnimatedSprite2D.play("idle")
 
 func check_victory():
-	var other_goal = get_tree().get_nodes_in_group("goal")
+	var other_goal = get_tree().get_nodes_in_group("goal2")
 	for goal in other_goal:
-		if goal != self and goal.get_parent().name == get_parent().name and not goal.player_inside:
+		if goal != self and not goal.player_inside:
 			return
 	get_node("/root/Main").show_victory_screen()

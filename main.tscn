@@ -616,11 +616,11 @@ z_index = 1
 position = Vector2(-251, 545)
 scale = Vector2(2, 2)
 
-[node name="GoalLight2" parent="Level2" groups=["goal"] instance=ExtResource("18_074og")]
+[node name="GoalLight2" parent="Level2" groups=["goal2"] instance=ExtResource("18_074og")]
 position = Vector2(69, -453)
 script = ExtResource("22_d13ii")
 
-[node name="GoalDark2" parent="Level2" groups=["goal"] instance=ExtResource("19_82xsv")]
+[node name="GoalDark2" parent="Level2" groups=["goal2"] instance=ExtResource("19_82xsv")]
 position = Vector2(-69, -452)
 script = ExtResource("23_1u8w0")
 
