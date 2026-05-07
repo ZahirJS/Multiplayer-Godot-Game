@@ -1,6 +1,6 @@
 extends Area2D
 
-var type = "light" # tipo de meta
+var type = "dark" # tipo de meta
 var player_inside = false # indica si el jugador correcto esta dentro
 
 func _ready():
@@ -26,4 +26,4 @@ func check_victory():
 	for goal in other_goal:
 		if goal != self and goal.get_parent().name == get_parent().name and not goal.player_inside:
 			return
-	get_node("/root/Main").show_level_complete()
+	get_node("/root/Main").show_victory_screen()

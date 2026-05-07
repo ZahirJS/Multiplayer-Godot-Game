@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://cd14r4ny123v1"]
+[gd_scene load_steps=34 format=4 uid="uid://cd14r4ny123v1"]
 
 [ext_resource type="Script" uid="uid://cx1i0i2e2s323" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dl4nmin82lujs" path="res://player_light.tscn" id="1_ig7tw"]
@@ -21,6 +21,8 @@
 [ext_resource type="AudioStream" uid="uid://xj2b2qf74u5t" path="res://music/109662__grunz__success.wav" id="19_cegan"]
 [ext_resource type="Texture2D" uid="uid://8uh4uyxyiwms" path="res://sprites/light/light_idle_1.png" id="20_getpj"]
 [ext_resource type="Texture2D" uid="uid://dvr2wboormqvn" path="res://sprites/dark/dark_idle_1.png" id="21_ryguw"]
+[ext_resource type="Script" uid="uid://bkdx0x5on2k2q" path="res://goal_light_2.gd" id="22_d13ii"]
+[ext_resource type="Script" uid="uid://co5c58nhm6lts" path="res://goal_dark_2.gd" id="23_1u8w0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_getpj"]
 bg_color = Color(0.901961, 0.890196, 0.886275, 0.47451)
@@ -614,11 +616,13 @@ z_index = 1
 position = Vector2(-251, 545)
 scale = Vector2(2, 2)
 
-[node name="GoalLight" parent="Level2" groups=["goal"] instance=ExtResource("18_074og")]
+[node name="GoalLight2" parent="Level2" groups=["goal"] instance=ExtResource("18_074og")]
 position = Vector2(69, -453)
+script = ExtResource("22_d13ii")
 
-[node name="GoalDark" parent="Level2" groups=["goal"] instance=ExtResource("19_82xsv")]
+[node name="GoalDark2" parent="Level2" groups=["goal"] instance=ExtResource("19_82xsv")]
 position = Vector2(-69, -452)
+script = ExtResource("23_1u8w0")
 
 [connection signal="pressed" from="MainScreen/VBoxContainer/Story" to="." method="_on_story_pressed"]
 [connection signal="pressed" from="MainScreen/VBoxContainer/Host" to="." method="_on_host_pressed"]
