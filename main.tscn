@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://cd14r4ny123v1"]
+[gd_scene load_steps=32 format=4 uid="uid://cd14r4ny123v1"]
 
 [ext_resource type="Script" uid="uid://cx1i0i2e2s323" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dl4nmin82lujs" path="res://player_light.tscn" id="1_ig7tw"]
@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://4gjqo3ars4bv" path="res://goal_light.tscn" id="18_074og"]
 [ext_resource type="PackedScene" uid="uid://ba5pqbbcengy1" path="res://goal_dark.tscn" id="19_82xsv"]
 [ext_resource type="AudioStream" uid="uid://xj2b2qf74u5t" path="res://music/109662__grunz__success.wav" id="19_cegan"]
+[ext_resource type="Texture2D" uid="uid://divr1mm43sg4p" path="res://sprites/light/light_idle_1.png" id="20_getpj"]
+[ext_resource type="Texture2D" uid="uid://bw3capynftn2" path="res://sprites/dark/dark_idle_1.png" id="21_ryguw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
 texture = ExtResource("4_lquwl")
@@ -71,6 +73,22 @@ sources/6 = SubResource("TileSetAtlasSource_efxa6")
 sources/9 = SubResource("TileSetAtlasSource_5vw27")
 sources/12 = SubResource("TileSetAtlasSource_dg77c")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_getpj"]
+bg_color = Color(0.901961, 0.890196, 0.886275, 0.47451)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ryguw"]
+bg_color = Color(0.6, 0.6, 0.6, 0.356863)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.8, 0.8, 0.8, 0.337255)
+border_blend = true
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1bvp3")
 
@@ -96,7 +114,6 @@ position = Vector2(-782, 504)
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="MainScreen" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="TextureRect" type="TextureRect" parent="MainScreen"]
 custom_minimum_size = Vector2(1792, 1280)
@@ -105,26 +122,45 @@ offset_bottom = 40.0
 texture = ExtResource("11_074og")
 expand_mode = 1
 
+[node name="Label" type="Label" parent="MainScreen"]
+offset_left = 291.0
+offset_top = 257.5
+offset_right = 1501.0
+offset_bottom = 528.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_2cqfq")
+theme_override_font_sizes/font_size = 200
+theme_override_styles/normal = SubResource("StyleBoxFlat_getpj")
+text = "Luma & Nox"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="MainScreen"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -34.0
-offset_top = -50.5
-offset_right = 34.0
-offset_bottom = 50.5
+offset_left = -250.0
+offset_top = -111.0
+offset_right = 250.0
+offset_bottom = 402.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
 alignment = 1
 
+[node name="Story" type="Button" parent="MainScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_2cqfq")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("12_yaehf")
+text = "Story"
+
 [node name="Host" type="Button" parent="MainScreen/VBoxContainer"]
 z_index = 1
 layout_mode = 2
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_focus_color = Color(0.863222, 0.960356, 0.924468, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("11_2cqfq")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = ExtResource("12_yaehf")
@@ -141,7 +177,7 @@ text = "Join"
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("11_2cqfq")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = ExtResource("12_yaehf")
 placeholder_text = "Enter host IP"
 alignment = 1
@@ -370,6 +406,70 @@ position = Vector2(-751, -452)
 [node name="GoalDark" parent="." instance=ExtResource("19_82xsv")]
 position = Vector2(756, -452)
 
+[node name="LoreScreen" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="LoreScreen"]
+offset_right = 1792.0
+offset_bottom = 1280.0
+texture = ExtResource("16_074og")
+
+[node name="TextureRect2" type="TextureRect" parent="LoreScreen"]
+offset_left = 359.0
+offset_top = 68.0
+offset_right = 678.0
+offset_bottom = 588.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("20_getpj")
+
+[node name="TextureRect3" type="TextureRect" parent="LoreScreen"]
+offset_left = 892.0
+offset_top = 142.0
+offset_right = 1258.0
+offset_bottom = 622.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("21_ryguw")
+flip_h = true
+
+[node name="Back" type="Button" parent="LoreScreen"]
+offset_left = 18.0
+offset_top = 27.0
+offset_right = 264.0
+offset_bottom = 122.0
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("11_2cqfq")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("12_yaehf")
+text = "Go Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoreScreen"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -676.0
+offset_top = -402.0
+offset_right = 673.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="LoreScreen/VBoxContainer"]
+custom_minimum_size = Vector2(950, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_2cqfq")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ryguw")
+text = "This is Luma and Nox. They are opposites. They are also the only ones who can save the world. Neither light nor shadow alone is enough. Only together can they reach the end."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="MainScreen/VBoxContainer/Story" to="." method="_on_story_pressed"]
 [connection signal="pressed" from="MainScreen/VBoxContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="MainScreen/VBoxContainer/Join" to="." method="_on_join_pressed"]
 [connection signal="pressed" from="DeathScreen/VBoxContainer/Button_Death" to="." method="_on_death_button_pressed"]
@@ -378,3 +478,4 @@ position = Vector2(756, -452)
 [connection signal="pressed" from="PauseScreen/VBoxContainer/Button" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseScreen/VBoxContainer/Button2" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="HUD/Button" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="LoreScreen/Back" to="." method="_on_back_pressed"]

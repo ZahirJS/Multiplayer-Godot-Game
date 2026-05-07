@@ -175,9 +175,13 @@ func _on_h_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(0, linear_to_db(value))
 
 func _on_story_pressed():
-	$MainScreen.visible = false
-	$LoreScreen.visible = true
+	fade_transition(func():
+		$MainScreen.visible = false
+		$LoreScreen.visible = true
+	)
 
 func _on_back_pressed():
-	$LoreScreen.visible = false
-	$MainScreen.visible = true
+	fade_transition(func():
+		$LoreScreen.visible = false
+		$MainScreen.visible = true
+	)
