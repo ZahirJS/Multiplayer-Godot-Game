@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dcr4cj14uhghu"]
 
 [ext_resource type="Script" uid="uid://bb4s62as6h3gc" path="res://light_obstacle.gd" id="1_adc2d"]
-[ext_resource type="Texture2D" uid="uid://tjj0g612vdr1" path="res://sprites/light_obstacle/light_obstacle_idle_1.png" id="2_qarj2"]
-[ext_resource type="Texture2D" uid="uid://djne8no6riggb" path="res://sprites/light_obstacle/light_obstacle_idle_2.png" id="3_oslpf"]
+[ext_resource type="Texture2D" uid="uid://dnixjbt2agk1y" path="res://sprites/light_obstacle/light_obstacle_idle_1.png" id="2_qarj2"]
+[ext_resource type="Texture2D" uid="uid://dx46ksvadaa21" path="res://sprites/light_obstacle/light_obstacle_idle_2.png" id="3_oslpf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0ilcg"]
 animations = [{

@@ -130,8 +130,8 @@ alignment = 1
 [node name="Host" type="Button" parent="MainScreen/VBoxContainer"]
 z_index = 1
 layout_mode = 2
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_focus_color = Color(0.863222, 0.960356, 0.924468, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("11_2cqfq")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = ExtResource("12_yaehf")
@@ -333,7 +333,6 @@ stream = ExtResource("19_cegan")
 
 [node name="Fade" type="CanvasLayer" parent="."]
 layer = 10
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Fade"]
 offset_right = 1792.0
