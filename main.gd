@@ -4,6 +4,7 @@ const PORT = 7000
 var peer = ENetMultiplayerPeer.new()
 var client_player = null # referencia al jugador del cliente
 var victory_reached = false
+var current_level = 1
 
 func _ready():
 	# conectar señal cuando un jugador se une
@@ -184,4 +185,43 @@ func _on_back_pressed():
 	fade_transition(func():
 		$LoreScreen.visible = false
 		$MainScreen.visible = true
+	)
+	
+func show_level_complete():
+	if victory_reached:
+		return
+	victory_reached = true
+	show_level_complete_rpc.rpc()
+
+@rpc("any_peer", "call_local")
+func show_level_complete_rpc():
+	$AudioStreamPlayer.stop()
+	fade_transition(func():
+		$Player.set_physics_process(false)
+		if client_player != null:
+			client_player.set_physics_process(false)
+		$LevelCompleteScreen.visible = true
+		$HUD.visible = false
+	)
+
+func _on_button_next_level_pressed() -> void:
+	next_level.rpc()
+
+@rpc("any_peer", "call_local")
+func next_level():
+	current_level = 2
+	victory_reached = false
+	fade_transition(func():
+		$LevelCompleteScreen.visible = false
+		$Level1.visible = false
+		$Level2.visible = true
+		$Player.position = Vector2(-782, 504)
+		$Player.spawn_position = Vector2(-782, 504)
+		$Player.set_physics_process(true)
+		if client_player != null:
+			client_player.position = Vector2(745, 460)
+			client_player.spawn_position = Vector2(745, 460)
+			client_player.set_physics_process(true)
+		$HUD.visible = true
+		$AudioStreamPlayer.play()
 	)

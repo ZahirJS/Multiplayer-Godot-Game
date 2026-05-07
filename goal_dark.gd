@@ -22,10 +22,11 @@ func _on_body_exited(body):
 		$AnimatedSprite2D.play("idle")
 
 func check_victory():
-	# revisar si todas las metas tienen a su jugador dentro
 	var other_goal = get_tree().get_nodes_in_group("goal")
 	for goal in other_goal:
 		if goal != self and not goal.player_inside:
 			return
-	# si todas las metas estan activas, llamar victoria
-	get_node("/root/Main").show_victory_screen()
+	if get_parent().name == "Level1":
+		get_node("/root/Main").show_level_complete()
+	else:
+		get_node("/root/Main").show_victory_screen()
