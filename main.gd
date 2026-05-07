@@ -211,6 +211,8 @@ func _on_button_next_level_pressed() -> void:
 func next_level():
 	current_level = 2
 	victory_reached = false
+	$Level1/GoalLight.monitoring = false  # <- agregar
+	$Level1/GoalDark.monitoring = false   # <- agregar
 	fade_transition(func():
 		$LevelCompleteScreen.visible = false
 		$Level1.visible = false
